@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body onload="cliente()">
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark">
@@ -61,7 +61,7 @@
     </nav>
   </header>
 
-  <main>
+  <main class="container-fluid">
 
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -88,14 +88,13 @@
         <div class="carousel-item">
           <img
             style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
-            src="https://media.istockphoto.com/photos/front-view-of-mock-up-laptop-computer-with-blank-screen-notebook-picture-id1294996142"
+            src="https://images.unsplash.com/photo-1583223667854-e0e05b1ad4f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHAlMjBub3RlYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
             width="80%">
 
           <div class="container">
             <div class="carousel-caption text-start">
               <h1 class="tc">Notebooks HP</h1>
-              <p class="tc">Procesador AMD Ryzen™ 5Windows 10 Home 64Gráficos AMD Radeon™8 GB de RAM DDR4-3200 MHz (2 x
-                4 GB)</p>
+              <p class="tc">Procesador AMD Ryzen™ 5 AMD Radeon™8 GB de RAM DDR4-3200 MHz </p>
               <p><a class="btn btn-lg btn-primary" href="#">Oferta $490.990</a></p>
             </div>
           </div>
@@ -103,14 +102,15 @@
         <div class="carousel-item active">
           <img
             style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
-            src="https://media.istockphoto.com/photos/ipad-mini-5-on-white-background-picture-id1324334899" width="80%">
+            src="https://images.unsplash.com/photo-1611241893603-3c359704e0ee?ixlib=rb-.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2Ftc3VuZyUyMHRhYmxldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+            width="80%">
 
           <div class="container">
             <div class="carousel-caption text-start">
               <h1 class="tc">Tablet Samsung Galaxy Tab A</h1>
               <p class="tc">Sistema Operativo: Android Pie 9,
-                Procesador: Qualcomm SDM429,
-                Núcleos del procesador: Quad Core</p>
+                Qualcomm SDM429
+              </p>
               <p><a class="btn btn-lg btn-primary" href="#">Oferta $ 90.990</a></p>
             </div>
           </div>
@@ -131,6 +131,9 @@
 
     <div>
       <h2 id="Clientes" class="text-center">Clientes</h2>
+    </div>
+    <div>
+      <h4 id="Nombre_cliente"></h4>
     </div>
     <table id="TablaClientes" class="display" style="width:100%">
       <thead>
@@ -310,7 +313,6 @@
           <th>Categoría</th>
           <th>Precio</th>
           <th>Cantidad</th>
-          <th></th>
         </tr>
       </thead>
       <tbody id="producto_table_body">
@@ -319,8 +321,6 @@
           <td>Smartphone</td>
           <td>1000 usd</td>
           <td id="contador">5</td>
-          <td><button id="aumenta" class="btn btn-sm btn-success">+1</button> <button id="disminuye"
-              class="btn btn-sm btn-danger">-1</button></td>
         </tr>
       </tbody>
     </table>
@@ -340,7 +340,7 @@
             </div>
             <div class="mb-3">
               <label for="categoriaInput" class="form-label">Categoría</label>
-              <input type="text" class="form-control" id="categoriaProducto" placeholder="Dirección del cliente"
+              <input type="text" class="form-control" id="categoriaProducto" placeholder="Categoría del producto"
                 required>
             </div>
             <div class="mb-3">
@@ -363,7 +363,7 @@
 
     <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row vpg mx-auto">
       <div class="col-md-7">
         <h1 class="featurette-heading fw-normal lh-1">Esta semana recuerda
           </h2>
@@ -396,7 +396,7 @@
     </div>
 
 
-    <hr class="featurette-divider ">
+
     <!-- Botón ventas diarias -->
 
     <section>
@@ -404,21 +404,21 @@
         <div class="px-4 py-2 text-center">
           <h1 class="display-6 fw-bold">Contador de Ventas</h1>
           <div class="col-lg-6 mx-auto">
-            <h3 id="contador">0</h3>
+            <h3 id="contador2">0</h3>
           </div>
         </div>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
-          <button id="aumenta" class="btn btn-success px-4 btn-lg">+1</button>
-          <button id="disminuye" class="btn btn-danger px-4 btn-lg">-1</button>
+          <button id="aumenta2" class="btn btn-success px-4 btn-lg">+1</button>
+          <button id="disminuye2" class="btn btn-danger px-4 btn-lg">-1</button>
 
         </div>
       </div>
     </section>
 
 
-    <hr class="featurette-divider ">
+
 
 
     <!-- FOOTER -->
@@ -466,9 +466,6 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8"
     src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>

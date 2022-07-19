@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#TablaClientes').DataTable();
 });
 
+
 $("#addcliente-form").submit(async function(form) {
     form.preventDefault();
 
@@ -21,7 +22,9 @@ $("#addcliente-form").submit(async function(form) {
 });
 
 $(document).ready(function () {
-    $('#TablaProductos').DataTable();
+    $('#TablaProductos').DataTable({
+      responsive: true
+    });
 });
 
 $("#addproduct-form").submit(async function(form) {
@@ -64,6 +67,18 @@ $("#addproduct-form").submit(async function(form) {
     })
 });
 
+//Funcion recibe cliente
+function cliente() {
+    let nombre = prompt('Ingrese su nombre:');
+    let apellido = prompt('Ingrese su apellido:');
+
+    if(nombre === null  || apellido === null){
+          document.getElementById('Nombre_cliente').innerHTML = 'Bienvenido/a';
+    } else{
+          document.getElementById('Nombre_cliente').innerHTML = 'Bienvenido/a ' + nombre + ' ' + apellido;
+    }
+
+}
 
 //Funcion del contador
 
@@ -83,6 +98,26 @@ $("#disminuye").click(function() {
         $('#contador').css('color','red');
     } else if (cont-1 >= 0 && cont-1 < 20) {
         $('#contador').css('color','black');
+    }
+    
+})
+
+$("#aumenta2").click(function () {
+    let cont = +$('#contador2').text();
+    document.getElementById("contador2").innerHTML = cont+1;
+    if (cont+1 >= 20) {
+        $('#contador2').css('color','green');
+    } else if (cont+1 >= 0) {
+        $('#contador2').css('color','black');
+    }
+}) 
+$("#disminuye2").click(function() {
+    let cont = +$('#contador2').text();
+    document.getElementById("contador2").innerHTML = cont-1;
+    if (cont-1 < 0) {
+        $('#contador2').css('color','red');
+    } else if (cont-1 >= 0 && cont-1 < 20) {
+        $('#contador2').css('color','black');
     }
     
 })
