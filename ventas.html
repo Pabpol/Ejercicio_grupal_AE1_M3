@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>Tecno Chile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+
+  <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+  <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+  <meta name="theme-color" content="#712cf9">
+
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Tecno Chile</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Productos">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Clientes">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Contador">Contador</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ventas.html">Ventas</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">CARRITO </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h3>Tus Productos</h3>
+            <table id="TablaProductos" class="display ms-2" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Iphone hiper mega ultra</td>
+                  <td>1000 usd</td>
+                  <td>5</td>
+                  <td>5.000</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- The Modal -->
+  <div class="me-3">
+    <a class="nav-link text-end me-4" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="badge text-end bg-danger">4</span>
+    </a>
+  </div>
+  <main>
+    <div class="container">
+      <h5 class="display-3">Listado de Compras</h5>
+      <div class="row" id="listadoProductos">
+        <div class="col-sm-4 card d-flex align-items-stretch">
+          <img class="card-img-top product-img img-thumbnail mt-2"
+            src="https://www.telescopioschile.cl/wp-content/uploads/2020/07/Telescopio-Celestron-PowerSeeker-80EQ.jpg"
+            alt="Telescopio">
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Telescopio Celestron PowerSeeker 80EQ</h5>
+
+            <h5 class="card-footer mt-auto"> $125.000</h5>
+
+
+            <div class="form-floating">
+              <select class="form-select" id="sel1" name="sellist">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+              </select>
+              <label for="sel1" class="form-label">Cantidad:</label>
+            </div>
+            <br>
+            <a href="#" class="btn btn-dark mt-auto align-self-start">Agregar</a>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </main>
+  <div class="footer-dark">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 item">
+            <h3>Integrantes</h3>
+            <ul>
+              <li><a href="#">Claudia Maraboli</a></li>
+              <li><a href="https://github.com/Cllanosawk">Cristian Llanos</a></li>
+              <li><a href="https://github.com/PabloCifuentesCid">Pablo Cifuentes</a></li>
+              <li><a href="https://github.com/Pabpol">Pablo Polanco</a></li>
+              <li><a href="https://github.com/ValentinaPavez">Valentina Pavez</a></li>
+              <li><a href="https://github.com/loreto-ormeno">Loreto Ormeño</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 item">
+            <h3>Nosotros</h3>
+            <ul>
+              <li><a href="#">Compañía</a></li>
+              <li><a href="#">Equipo</a></li>
+              <li><a href="#">Ofertas laborales</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 item text">
+            <h3>Tecno Chile</h3>
+            <p>Empresa líder en comercio de tecnologías.</p>
+          </div>
+          <div class="col item social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="copyright">Tecno Chile &copy; 2022, Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script src="assets/js/script.js"></script>
+
+
+</body>
+
+</html>
