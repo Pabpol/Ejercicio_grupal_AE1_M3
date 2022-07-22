@@ -132,7 +132,7 @@ function Producto(id, nombre, precio, img) {
   this.img = img;
 }
 
-function clpFormat(val) {
+function clpFormat(val){
   return new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' }).format(val)
 }
 
