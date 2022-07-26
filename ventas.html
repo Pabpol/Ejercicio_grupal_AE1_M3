@@ -47,13 +47,13 @@
               <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Productos">Productos</a>
+              <a class="nav-link" href="index.html#Productos">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Clientes">Clientes</a>
+              <a class="nav-link" href="index.html#Clientes">Clientes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#Contador">Contador</a>
+              <a class="nav-link" aria-current="page" href="index.html#Contador">Contador</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="ventas.html">Ventas</a>
@@ -89,13 +89,7 @@
                   <th>Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Iphone hiper mega ultra</td>
-                  <td>1000 usd</td>
-                  <td>5</td>
-                  <td>5.000</td>
-                </tr>
+              <tbody id="body-tabla">
               </tbody>
             </table>
 
@@ -112,48 +106,37 @@
   </header>
   <!-- The Modal -->
   <div class="me-3">
-    <a class="nav-link text-end me-4" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+    <a id="carrito" class="nav-link text-end me-4" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
       <i class="fa-solid fa-cart-shopping"></i>
-      <span class="badge text-end bg-danger">4</span>
+      <span class="badge text-end bg-danger" id="contadorProductor">0</span>
     </a>
   </div>
   <main>
     <div class="container">
       <h5 class="display-3">Listado de Compras</h5>
-      <div class="row" id="listadoProductos">
-        <div class="col-sm-4 card d-flex align-items-stretch">
-          <img class="card-img-top product-img img-thumbnail mt-2"
-            src="https://www.telescopioschile.cl/wp-content/uploads/2020/07/Telescopio-Celestron-PowerSeeker-80EQ.jpg"
-            alt="Telescopio">
-
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Telescopio Celestron PowerSeeker 80EQ</h5>
-
-            <h5 class="card-footer mt-auto"> $125.000</h5>
-
-
-            <div class="form-floating">
-              <select class="form-select" id="sel1" name="sellist">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-              </select>
-              <label for="sel1" class="form-label">Cantidad:</label>
-            </div>
-            <br>
-            <a href="#" class="btn btn-dark mt-auto align-self-start">Agregar</a>
-          </div>
-        </div>
-
-
+      <div id="filtro-space" class="text-end my-2">
+        <label for="filtro">Filtro: </label>
+        <input type="text" id="filtro" placeholder="Busca por nombre o sku" onkeyup="FiltroProductos()">
+      </div>
+      <!-- Card de productos -->
+      <div class="row mb-5" id="listadoProductos">
 
       </div>
-    </div>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
   </main>
+
   <div class="footer-dark">
     <footer>
       <div class="container">
@@ -163,10 +146,10 @@
             <ul>
               <li><a href="#">Claudia Maraboli</a></li>
               <li><a href="https://github.com/Cllanosawk">Cristian Llanos</a></li>
+              <li><a href="https://github.com/loreto-ormeno">Loreto Ormeño</a></li>
               <li><a href="https://github.com/PabloCifuentesCid">Pablo Cifuentes</a></li>
               <li><a href="https://github.com/Pabpol">Pablo Polanco</a></li>
               <li><a href="https://github.com/ValentinaPavez">Valentina Pavez</a></li>
-              <li><a href="https://github.com/loreto-ormeno">Loreto Ormeño</a></li>
             </ul>
           </div>
           <div class="col-md-3 item">
