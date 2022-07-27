@@ -1,6 +1,8 @@
 $(document).ready(function() {
   $('#TablaProductos').DataTable({
-    scrollX: true
+    scrollX: true,
+    paging: false,
+    info: false
   });
 });
 
@@ -19,7 +21,7 @@ function clpFormat(val) {
 const producto1 = new Producto(1, "Telescopio Celestron PowerSeeker 80EQ", 125000, "https://www.telescopioschile.cl/wp-content/uploads/2020/07/Telescopio-Celestron-PowerSeeker-80EQ.jpg");
 const producto2 = new Producto(2, "Reloj", 300000, "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80");
 const producto3 = new Producto(3, "Audífonos", 100000, "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80");
-const producto4 = new Producto(4, "Audífonos", 200000, "https://images.unsplash.com/photo-1606741965509-717b9fdd6549?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+const producto4 = new Producto(4, "AirPods", 200000, "https://images.unsplash.com/photo-1606741965509-717b9fdd6549?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
 const producto5 = new Producto(5, "Silla", 400000, "https://img.freepik.com/psd-gratis/vista-frontal-maqueta-silla-juegos_1332-21844.jpg?w=740&t=st=1658366671~exp=1658367271~hmac=9ff01b06cf7d695c282efd19a22fe049899865dedf6e3558c2510b9cd3257eb6");
 const producto6 = new Producto(6, "Notebook", 450000, "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
 
@@ -50,9 +52,19 @@ productos.forEach(function(producto) {
             </div>
             <br>
             <a class="agregar-carrito btn btn-dark mt-auto align-self-start">Agregar</a>
+           
           </div>
         </div>`
 })
+
+function numProducto() {
+  var bodyTabla = document.getElementById('body-tabla');
+  console.log(bodyTabla)
+  var prod = bodyTabla.querySelector('tr')
+  console.log / (prod)
+}
+
+
 
 // Filtrar productos
 function FiltroProductos() {
@@ -81,12 +93,16 @@ function ProductoCarrito(id, nombre, precio, cantidad) {
   this.cantidad = cantidad;
 }
 ProductoCarrito.prototype.actualizarCantidad = function(nuevaCantidad) {
-  this.cantidad = nuevaCantidad;
+  this.cantidad = parseInt(this.cantidad) + parseInt(nuevaCantidad);
 }
 const productosCarrito = [];
 
 function addCarrito(p) {
-  productosCarrito.push(p);
+  if (productosCarrito.find(element => element.id === p.id)) {
+    productosCarrito.find(element => element.id === p.id).actualizarCantidad(p.cantidad);
+  } else {
+    productosCarrito.push(p);
+  }
 }
 
 document.querySelectorAll(".agregar-carrito").forEach((e) => {
@@ -101,16 +117,18 @@ document.querySelectorAll(".agregar-carrito").forEach((e) => {
   })
 })
 
+
 //Poblar el carrito
 function poblarCarrito() {
   const bodyTabla = document.getElementById('body-tabla');
   productosCarrito.forEach(function(productoCarrito) {
     bodyTabla.innerHTML +=
-      `<tr>
+      `<tr id="${productoCarrito.id}">
         <td>${productoCarrito.nombre}</td>
         <td>${productoCarrito.precio}</td>
         <td>${productoCarrito.cantidad}</td>
         <td>${parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", ""))}</td>
+        <td><a class="btn btn-sm btn-danger eliminar-producto">Eliminar</a></td>
       </tr>`
   });
 }
@@ -119,7 +137,8 @@ document.getElementById('carrito').addEventListener('click', () => {
   const bodyTabla = document.getElementById('body-tabla');
   bodyTabla.innerHTML = "";
   poblarCarrito();
-})
+  eliminarProducto();
+});
 
 //Actualizar contador carrito
 function actualizarContador(valor) {
@@ -127,3 +146,13 @@ function actualizarContador(valor) {
   contador.innerHTML = `${valor}`
 }
 
+//Eliminar producto
+function eliminarProducto() {
+  document.querySelectorAll(".eliminar-producto").forEach((e) => {
+    e.addEventListener('click', () => {
+      productosCarrito.splice(productosCarrito.indexOf((producto) => (producto.id === e.parentElement.parentElement.id)), 1)
+      e.parentElement.parentElement.remove()
+      actualizarContador(productosCarrito.length)
+    })
+  })
+}
