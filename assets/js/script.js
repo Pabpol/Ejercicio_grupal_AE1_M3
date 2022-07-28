@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('#TablaClientes').DataTable({
-    scrollX: true
+    scrollX: true,
+    responsive: true
   });
 });
 
@@ -25,7 +26,8 @@ $("#addcliente-form").submit(async function(form) {
 
 $(document).ready(function() {
   $('#TablaProductos').DataTable({
-    scrollX: true
+    scrollX: true,
+    responsive: true
   });
 });
 

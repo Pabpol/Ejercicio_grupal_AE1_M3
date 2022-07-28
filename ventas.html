@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -80,26 +81,39 @@
           <!-- Modal body -->
           <div class="modal-body">
             <h3>Tus Productos</h3>
-            <table id="TablaProductos" class="display ms-2" style="width:100%">
+            <table id="TablaProductos" class="display" style="width:100%">
               <thead>
                 <tr>
                   <th>Nombre</th>
                   <th>Precio</th>
                   <th>Cantidad</th>
-                  <th>Total</th>
+                  <th>Subtotal</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody id="body-tabla">
               </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Total</td>
+                  <td id="TotalCarro"></td>
+
+                </tr>
+
+              </tfoot>
             </table>
 
           </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" onclick="vaciarCarrito()">Vaciar Carrito</button>
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+
           </div>
+
 
         </div>
       </div>
@@ -117,7 +131,8 @@
       <h5 class="display-3">Listado de Compras</h5>
       <div id="filtro-space" class="text-end my-2">
         <label for="filtro">Filtro: </label>
-        <input class="form-control-sm" type="text" id="filtro" placeholder="Busca por nombre o sku" onkeyup="FiltroProductos(), numProducto()">
+        <input class="form-control-sm" type="text" id="filtro" placeholder="Busca por nombre o sku"
+          onkeyup="FiltroProductos()">
       </div>
       <!-- Card de productos -->
       <div class="row mb-5" id="listadoProductos">
@@ -179,9 +194,12 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
+  
+  <script src="https://cdn.datatables.net/fixedheader/3.2.4/js/dataTables.fixedHeader.min.js"></script>
   <script type="text/javascript" charset="utf8"
     src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
   <script src="assets/js/ventas.js"></script>

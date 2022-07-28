@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $('#TablaProductos').DataTable({
     scrollX: true,
-    paging: false,
     info: false
   });
 });
@@ -51,17 +50,25 @@ productos.forEach(function(producto) {
               <label for="sel1" class="form-label">Cantidad:</label>
             </div>
             <br>
-            <a class="agregar-carrito btn btn-dark mt-auto align-self-start">Agregar</a>
+            <a class="agregar-carrito btn btn-danger mt-auto align-self-start">Agregar</a>
            
           </div>
         </div>`
 })
-
-function numProducto() {
-  var bodyTabla = document.getElementById('body-tabla');
-  console.log(bodyTabla)
-  var prod = bodyTabla.querySelector('tr')
-  console.log / (prod)
+// Total Carrito
+function totalCarrito() {
+  var subtotales = document.getElementsByClassName('subtotal');
+  var total = 0;
+  for (let i = 0; i < subtotales.length; i++) {
+    total = total + parseInt(subtotales[i].innerText);
+  }
+  var formatter = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' });
+  if (total == 0) {
+    var totalCarro = '-';
+  } else {
+    var totalCarro = formatter.format(total);
+  }
+  document.getElementById('TotalCarro').innerHTML = totalCarro;
 }
 
 
@@ -120,17 +127,30 @@ document.querySelectorAll(".agregar-carrito").forEach((e) => {
 
 //Poblar el carrito
 function poblarCarrito() {
+  //Destruir tabla
+  $('#TablaProductos').DataTable().clear().destroy();
+
+  //Poblar tabla
   const bodyTabla = document.getElementById('body-tabla');
   productosCarrito.forEach(function(productoCarrito) {
     bodyTabla.innerHTML +=
       `<tr id="${productoCarrito.id}">
         <td>${productoCarrito.nombre}</td>
         <td>${productoCarrito.precio}</td>
-        <td>${productoCarrito.cantidad}</td>
-        <td>${parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", ""))}</td>
+        <td class='subcantidad'>${productoCarrito.cantidad}</td>
+        <td class='subtotal'>${parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", ""))}</td>
         <td><a class="btn btn-sm btn-danger eliminar-producto">Eliminar</a></td>
       </tr>`
   });
+  //Reinicializacion tabla
+  $('#TablaProductos').DataTable({
+    scrollX: true,
+    paging: false,
+    info: false,
+    responsive: true
+  });
+
+  totalCarrito();
 }
 
 document.getElementById('carrito').addEventListener('click', () => {
@@ -138,6 +158,7 @@ document.getElementById('carrito').addEventListener('click', () => {
   bodyTabla.innerHTML = "";
   poblarCarrito();
   eliminarProducto();
+
 });
 
 //Actualizar contador carrito
@@ -153,6 +174,18 @@ function eliminarProducto() {
       productosCarrito.splice(productosCarrito.indexOf((producto) => (producto.id === e.parentElement.parentElement.id)), 1)
       e.parentElement.parentElement.remove()
       actualizarContador(productosCarrito.length)
+      totalCarrito();
     })
   })
+}
+
+//Vaciar carrito
+function vaciarCarrito() {
+  document.querySelectorAll("tbody>tr").forEach((e) => {
+    e.remove();
+    productosCarrito.shift();
+    actualizarContador(productosCarrito.length)
+
+  })
+  totalCarrito();
 }
