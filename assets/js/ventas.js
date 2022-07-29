@@ -63,7 +63,7 @@ function totalCarrito() {
   var subtotales = document.getElementsByClassName('subtotal');
   var total = 0;
   for (let i = 0; i < subtotales.length; i++) {
-    total = total + parseInt(subtotales[i].innerText);
+    total = total + parseInt(subtotales[i].innerText.split("$")[1].replace(".", ""));
   }
   var formatter = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' });
   if (total == 0) {
@@ -102,14 +102,18 @@ function ProductoCarrito(id, nombre, precio, cantidad) {
   this.precio = precio;
   this.cantidad = cantidad;
 }
-ProductoCarrito.prototype.actualizarCantidad = function(nuevaCantidad) {
+ProductoCarrito.prototype.aumentarCantidad = function(nuevaCantidad) {
   this.cantidad = parseInt(this.cantidad) + parseInt(nuevaCantidad);
+}
+
+ProductoCarrito.prototype.actualizarCantidad = function(nuevaCantidad) {
+  this.cantidad = parseInt(nuevaCantidad);
 }
 const productosCarrito = [];
 
 function addCarrito(p) {
   if (productosCarrito.find(element => element.id === p.id)) {
-    productosCarrito.find(element => element.id === p.id).actualizarCantidad(p.cantidad);
+    productosCarrito.find(element => element.id === p.id).aumentarCantidad(p.cantidad);
   } else {
     productosCarrito.push(p);
   }
@@ -140,8 +144,19 @@ function poblarCarrito() {
       `<tr id="${productoCarrito.id}">
         <td>${productoCarrito.nombre}</td>
         <td>${productoCarrito.precio}</td>
-        <td class='subcantidad'>${productoCarrito.cantidad}</td>
-        <td class='subtotal'>${parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", ""))}</td>
+        <td class='subcantidad'>
+              <select class="form-select selCarrito" id="selCarrito_${productoCarrito.id}" onchange="cambiarCantidadCarrito(${productoCarrito.id})" name="sellist">
+                <option class"option-carrito">${productoCarrito.cantidad}</option>
+                <option class"option-carrito">1</option>
+                <option class"option-carrito">2</option>
+                <option class"option-carrito">3</option>
+                <option class"option-carrito">4</option>
+                <option class"option-carrito">5</option>
+                <option class"option-carrito">6</option> 
+                <option class"option-carrito">7</option>
+              </select>
+        </td>
+        <td class='subtotal'>${clpFormat(parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", "")))}</td>
         <td><a class="btn btn-sm btn-danger eliminar-producto">Eliminar</a></td>
       </tr>`
   });
@@ -190,5 +205,15 @@ function vaciarCarrito() {
     actualizarContador(productosCarrito.length)
 
   })
+  totalCarrito();
+}
+
+function cambiarCantidadCarrito(id){
+  const select = document.getElementById(`selCarrito_${id}`);
+  const nuevaCantidad = select.value
+  const producto = productosCarrito.find(element => element.id == id)
+  const precioProducto = parseInt(producto.precio.split("$")[1].replace(".", ""));
+  producto.actualizarCantidad(nuevaCantidad)
+  select.parentNode.nextElementSibling.innerText = `${clpFormat(precioProducto*nuevaCantidad)}`; 
   totalCarrito();
 }
