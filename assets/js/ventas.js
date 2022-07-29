@@ -23,13 +23,16 @@ const producto3 = new Producto(3, "Audífonos", 100000, "https://images.unsplash
 const producto4 = new Producto(4, "AirPods", 200000, "https://images.unsplash.com/photo-1606741965509-717b9fdd6549?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
 const producto5 = new Producto(5, "Silla", 400000, "https://img.freepik.com/psd-gratis/vista-frontal-maqueta-silla-juegos_1332-21844.jpg?w=740&t=st=1658366671~exp=1658367271~hmac=9ff01b06cf7d695c282efd19a22fe049899865dedf6e3558c2510b9cd3257eb6");
 const producto6 = new Producto(6, "Notebook", 450000, "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+const producto7 = new Producto(7, "Placa Madre", 79990, "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80", "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80");
+const producto8 = new Producto(8, "Notebook HP", 490990, "https://images.unsplash.com/photo-1583223667854-e0e05b1ad4f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHAlMjBub3RlYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
+const producto9 = new Producto(9, "Tablet Samsung Galaxy Tab A", 90990, "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?ixlib=rb-.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2Ftc3VuZyUyMHRhYmxldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 
-const productos = [producto1, producto2, producto3, producto4, producto5, producto6];
+const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9];
 const listadoProductos = document.getElementById('listadoProductos');
 
 productos.forEach(function(producto) {
   listadoProductos.innerHTML +=
-    `<div class="col-sm-4 card align-items-stretch">
+    `<div class="col-sm-4 card align-items-stretch" id="producto_${producto.id}">
           <img class="card-img-top img-thumbnail mt-2 product-img" src="${producto.img}">
             
           <div class="card-body d-flex flex-column">
