@@ -23,8 +23,11 @@ const producto3 = new Producto(3, "Audífonos", 100000, "https://images.unsplash
 const producto4 = new Producto(4, "AirPods", 200000, "https://images.unsplash.com/photo-1606741965509-717b9fdd6549?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
 const producto5 = new Producto(5, "Silla", 400000, "https://img.freepik.com/psd-gratis/vista-frontal-maqueta-silla-juegos_1332-21844.jpg?w=740&t=st=1658366671~exp=1658367271~hmac=9ff01b06cf7d695c282efd19a22fe049899865dedf6e3558c2510b9cd3257eb6");
 const producto6 = new Producto(6, "Notebook", 450000, "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxhcHRvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+const producto10 = new Producto(10, "Robot", 990000, "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+const producto11 = new Producto(11, "Consola PS5 + Control", 890000, "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+const producto12 = new Producto(12, "Mouse inalambrico", 45000, "https://images.unsplash.com/photo-1618247130379-980b9fe0df04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
 
-const productos = [producto1, producto2, producto3, producto4, producto5, producto6];
+const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto10, producto11, producto12];
 const listadoProductos = document.getElementById('listadoProductos');
 
 productos.forEach(function(producto) {
