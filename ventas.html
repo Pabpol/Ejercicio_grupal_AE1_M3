@@ -37,7 +37,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top  bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Tecno Chile</a>
+        <a class="navbar-brand" href="index.html">Tecno Chile</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -48,13 +48,13 @@
               <a class="nav-link active dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown">Inicio</a>
                 <ul class="dropdown-menu">
                     <li>
-                    <a class="nav-link text-dark" href="#Productos">Productos</a>
+                    <a class="nav-link text-dark" href="index.html#Productos">Productos</a>
                     </li>
                     <li>
-                    <a class="nav-link text-dark" href="#Clientes">Clientes</a>
+                    <a class="nav-link text-dark" href="index.html#Clientes">Clientes</a>
                     </li>
                     <li>
-                    <a class="nav-link text-dark" href="#Contador">Contador</a>
+                    <a class="nav-link text-dark" href="index.html#Contador">Contador</a>
                     </li>
                 </ul>
             <li class="nav-item">
@@ -121,7 +121,7 @@
     </div>
   </header>
   <!-- The Modal -->
-  <div class="me-3">
+  <div class="col-md-2 me-3 carritoCompras fixed-top">
     <a id="carrito" class="nav-link text-end me-4" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
       <i class="fa-solid fa-cart-shopping"></i>
       <span class="badge text-end bg-danger" id="contadorProductor">0</span>
@@ -129,26 +129,40 @@
   </div>
   <main>
     <div class="container">
-      <h5 class="display-3">Listado de Compras</h5>
+      <h5 id='tituloCompras' class="display-3">Listado de Compras</h5>
       <div id="filtro-space" class="text-end my-2">
         <label for="filtro">Filtro: </label>
         <input class="form-control-sm" type="text" id="filtro" placeholder="Busca por nombre o sku"
           onkeyup="FiltroProductos()">
       </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-nav previous-page">
+            <a class="page-link" href="#tituloCompras" tabindex="-1">Prev</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">1</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">2</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">3</a></li>
+          <li class="page-nav next-page">
+            <a class="page-link" href="#tituloCompras">Sig</a>
+          </li>
+        </ul>
+      </nav>
+
       <!-- Card de productos -->
-      <div class="row mb-5" id="listadoProductos">
+      <div class="row mb-10" id="listadoProductos">
 
       </div>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          <li class="page-nav previous-page">
+            <a class="page-link" href="#tituloCompras" tabindex="-1">Prev</a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">1</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">2</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">3</a></li>
+          <li class="page-nav next-page">
+            <a class="page-link" href="#tituloCompras">Sig</a>
           </li>
         </ul>
       </nav>
@@ -195,6 +209,7 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
