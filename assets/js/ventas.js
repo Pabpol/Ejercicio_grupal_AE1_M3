@@ -26,8 +26,11 @@ const producto6 = new Producto(6, "Notebook", 450000, "https://images.unsplash.c
 const producto7 = new Producto(7, "Placa Madre", 79990, "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80", "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80");
 const producto8 = new Producto(8, "Notebook HP", 490990, "https://images.unsplash.com/photo-1583223667854-e0e05b1ad4f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHAlMjBub3RlYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
 const producto9 = new Producto(9, "Tablet Samsung Galaxy Tab A", 90990, "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?ixlib=rb-.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2Ftc3VuZyUyMHRhYmxldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")
+const producto10 = new Producto(10, "Robot", 990000, "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+const producto11 = new Producto(11, "Consola PS5 + Control", 890000, "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+const producto12 = new Producto(12, "Mouse inalambrico", 45000, "https://images.unsplash.com/photo-1618247130379-980b9fe0df04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
 
-const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9];
+const productos = [producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12];
 const listadoProductos = document.getElementById('listadoProductos');
 
 productos.forEach(function(producto) {
@@ -63,7 +66,7 @@ function totalCarrito() {
   var subtotales = document.getElementsByClassName('subtotal');
   var total = 0;
   for (let i = 0; i < subtotales.length; i++) {
-    total = total + parseInt(subtotales[i].innerText);
+    total = total + parseInt(subtotales[i].innerText.split("$")[1].replace(".", ""));
   }
   var formatter = new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' });
   if (total == 0) {
@@ -102,14 +105,18 @@ function ProductoCarrito(id, nombre, precio, cantidad) {
   this.precio = precio;
   this.cantidad = cantidad;
 }
-ProductoCarrito.prototype.actualizarCantidad = function(nuevaCantidad) {
+ProductoCarrito.prototype.aumentarCantidad = function(nuevaCantidad) {
   this.cantidad = parseInt(this.cantidad) + parseInt(nuevaCantidad);
+}
+
+ProductoCarrito.prototype.actualizarCantidad = function(nuevaCantidad) {
+  this.cantidad = parseInt(nuevaCantidad);
 }
 const productosCarrito = [];
 
 function addCarrito(p) {
   if (productosCarrito.find(element => element.id === p.id)) {
-    productosCarrito.find(element => element.id === p.id).actualizarCantidad(p.cantidad);
+    productosCarrito.find(element => element.id === p.id).aumentarCantidad(p.cantidad);
   } else {
     productosCarrito.push(p);
   }
@@ -140,8 +147,19 @@ function poblarCarrito() {
       `<tr id="${productoCarrito.id}">
         <td>${productoCarrito.nombre}</td>
         <td>${productoCarrito.precio}</td>
-        <td class='subcantidad'>${productoCarrito.cantidad}</td>
-        <td class='subtotal'>${parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", ""))}</td>
+        <td class='subcantidad'>
+              <select class="form-select selCarrito" id="selCarrito_${productoCarrito.id}" onchange="cambiarCantidadCarrito(${productoCarrito.id})" name="sellist">
+                <option class"option-carrito">${productoCarrito.cantidad}</option>
+                <option class"option-carrito">1</option>
+                <option class"option-carrito">2</option>
+                <option class"option-carrito">3</option>
+                <option class"option-carrito">4</option>
+                <option class"option-carrito">5</option>
+                <option class"option-carrito">6</option> 
+                <option class"option-carrito">7</option>
+              </select>
+        </td>
+        <td class='subtotal'>${clpFormat(parseInt(productoCarrito.cantidad) * parseInt(productoCarrito.precio.split("$")[1].replace(".", "")))}</td>
         <td><a class="btn btn-sm btn-danger eliminar-producto">Eliminar</a></td>
       </tr>`
   });
@@ -190,5 +208,15 @@ function vaciarCarrito() {
     actualizarContador(productosCarrito.length)
 
   })
+  totalCarrito();
+}
+
+function cambiarCantidadCarrito(id){
+  const select = document.getElementById(`selCarrito_${id}`);
+  const nuevaCantidad = select.value
+  const producto = productosCarrito.find(element => element.id == id)
+  const precioProducto = parseInt(producto.precio.split("$")[1].replace(".", ""));
+  producto.actualizarCantidad(nuevaCantidad)
+  select.parentNode.nextElementSibling.innerText = `${clpFormat(precioProducto*nuevaCantidad)}`; 
   totalCarrito();
 }

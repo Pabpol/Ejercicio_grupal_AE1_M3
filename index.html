@@ -41,18 +41,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Productos">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Clientes">Clientes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Contador">Contador</a>
-            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown">Inicio</a>
+                <ul class="dropdown-menu">
+                    <li>
+                    <a class="nav-link text-dark" href="#Productos">Productos</a>
+                    </li>
+                    <li>
+                    <a class="nav-link text-dark" href="#Clientes">Clientes</a>
+                    </li>
+                    <li>
+                    <a class="nav-link text-dark" href="#Contador">Contador</a>
+                    </li>
+                </ul>
             <li class="nav-item">
               <a class="nav-link" href="ventas.html">Ventas</a>
             </li>
@@ -274,7 +275,7 @@
     </table>
 
     <section id="FormAgregarCliente">
-      <button class="btn btn-dark ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseClientes"
+      <button class="btn btn-danger ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseClientes"
         aria-expanded="false" aria-controls="collapseClientes">
         Añadir Cliente
       </button>
@@ -337,7 +338,7 @@
     </table>
 
     <section id="FormAgregarProducto">
-      <button class="btn btn-dark ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProductos"
+      <button class="btn btn-danger ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProductos"
         aria-expanded="false" aria-controls="collapseProductos">
         Agregar Producto
       </button>

@@ -166,3 +166,7 @@ body{
   position: absolute;
   margin-left: -5px;
 }
+
+.selCarrito option:first-child {
+  display:none;
+}
