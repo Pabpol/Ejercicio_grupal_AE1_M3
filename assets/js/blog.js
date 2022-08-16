@@ -45,7 +45,7 @@ const getPostsData = async () => {
                 <span class="badge-box"><i class="fa fa-check"></i></span>
                 <h4 class="card-title">${posts[i].title}</h4>
                 <p class="card-text">${posts[i].body}</p>
-                <button onclick = "abrirModal(${posts[i].id}, ${posts[i].userId})" class="btn-post btn btn-default text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPost" >Pincha aqui para mas post</button>
+                <button onclick = "abrirModal(${posts[i].id}, ${posts[i].userId})" class="btn-post btn btn-default text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPost" >Pincha aquí para más detalles</button>
               </div>
             </div>
           </div>`
@@ -80,3 +80,21 @@ async function funcionAsincronica() {
   const mensaje = await funcionPromesa();
   console.log(mensaje)
 }
+
+//Funcion para el loader que aparece antes de que carguen los posts
+function cargado(fcnVisible) {
+  //Se oculta el listado de posts
+  document.querySelector('#listadoPost').style.display = 'none';
+  //Se revisa cada 1 seg si se cargo hasta el post 20 o podria ser otra condicion. 
+  var intervalId = window.setInterval(function() {
+    if (document.getElementById('20') !== undefined) {
+      window.clearInterval(intervalId);
+      fcnVisible.call(this);
+    }
+  }, 1000);
+}
+
+cargado(function() {
+  document.querySelector('#listadoPost').style.display = '';
+  document.querySelector('.lds-roller').style.display = 'none';
+})

@@ -78,33 +78,22 @@
   </header>
 
   <main>
+    <div class="container">
 
-    <h1>BLOG</h1>
-
-
-    <div class="text-end my-2">
-      <label for="filtro" class="form-label-sm col">
-        Buscar por </label>
-      <select class="form-select-sm col" id="filtro_select" name="filtrar">
-        <option>Todos</option>
-        <option>Favoritos</option>
-      </select>
-    </div>
-    <div class="text-end my-2">
-      <input class="form-control-sm" type="text" id="filtro" placeholder="ejemplo: Usos prácticos de ..."
-        onkeyup="FiltroPost()" onkeydown="sinNumeros()">
-      <a class="buscar btn btn-dark mt-auto align-self-start">Buscar</a>
-    </div>
-
-    <div class="lds-roller">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <h1 class="display-3">Blog</h1>
+      <div class="text-end my-2">
+        <label for="filtro" class="form-label-sm col">
+          Buscar por </label>
+        <select class="form-select-sm col" id="filtro_select" name="filtrar">
+          <option>Todos</option>
+          <option>Favoritos</option>
+        </select>
+      </div>
+      <div class="text-end my-2">
+        <input class="form-control-sm" type="text" id="filtro" placeholder="ejemplo: Usos prácticos de ..."
+          onkeyup="FiltroPost()" onkeydown="sinNumeros()">
+        <a class="buscar btn btn-dark mt-auto align-self-start">Buscar</a>
+      </div>
     </div>
 
     <div class="modal fade" tabindex="-1" id="modalPost" aria-hidden="true">
@@ -127,6 +116,16 @@
     <section>
 
       <div class="container">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <div class="row" id="listadoPost">
           <!-- <div class="col-md-4"> -->
 
