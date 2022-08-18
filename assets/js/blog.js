@@ -148,3 +148,49 @@ cargado(function () {
   document.querySelector("#listadoPost").style.display = "";
   document.querySelector(".lds-roller").style.display = "none";
 });
+cargado(function() {
+  document.querySelector('#listadoPost').style.display = '';
+  document.querySelector('.lds-roller').style.display = 'none';
+})
+
+//Paginacion de los post
+$(document).ready(function(){
+  var nCards = $(".card").length;
+  var limitePorPagina = 6;
+  var totalPaginas = Math.ceil(nCards / limitePorPagina);
+  var actualPagina;
+
+  console.log(nCards);
+  console.log(totalPaginas);
+  
+  function mostrarPagina(pagina){
+    if(pagina < 1 || pagina > totalPaginas) return false;
+  
+    actualPagina = pagina;
+
+    $(".previous-page").toggleClass("disabled", actualPagina === 1);
+    $(".next-page").toggleClass("disabled", actualPagina === totalPaginas);
+
+    $(".card").hide().slice((actualPagina - 1) * limitePorPagina, actualPagina * limitePorPagina).show();
+    return true;
+  }
+
+  //Primera pagina
+  $(".card-content").show();
+  mostrarPagina(1);
+  
+  //Al clickear en algun numero de navegación
+  $(document).on("click", "li.page-item:not(.active)", function(){    
+    return mostrarPagina(+$(this).text());
+  });
+  
+  //Al clickear en siguiente del nav
+  $(".next-page").on("click", function(){
+      return mostrarPagina(actualPagina + 1);
+  });
+  
+  //Al clickear en anterior del nav
+  $(".previous-page").on("click", function(){
+    return mostrarPagina(actualPagina - 1);
+  });
+})
