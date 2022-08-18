@@ -1,8 +1,10 @@
+//Favoritos
+let favoritos = []
 // Filtrar productos
-function FiltroPost() {
-  var entrada = document.getElementById('filtro').value.toLowerCase();
-  var contenedor = document.getElementById('listadoPost');
-  var posts = contenedor.getElementsByClassName('card');
+function BuscarPost() {
+  let entrada = document.getElementById('filtro').value.toLowerCase();
+  let contenedor = document.getElementById('listadoPost');
+  let posts = contenedor.getElementsByClassName('card');
 
   for (let i = 0; i < posts.length; i++) {
     var nombrePost = posts[i].querySelector('.card-body .card-title');
@@ -11,6 +13,30 @@ function FiltroPost() {
       posts[i].parentElement.style.display = '';
     } else {
       posts[i].parentElement.style.display = 'none';
+    }
+  }
+}
+
+function FiltroPost() {
+  let entrada = document.getElementById('filtro_select').value.toLowerCase();
+  let contenedor = document.getElementById('listadoPost');
+  let posts = contenedor.getElementsByClassName('card');
+
+  if (entrada === "favoritos") {
+    for (let i = 0; i < posts.length; i++) {
+      let idPost = posts[i].id;
+
+      if (favoritos.find(e => e.id == idPost)) {
+        posts[i].parentElement.style.display = '';
+      } else {
+        posts[i].parentElement.style.display = 'none';
+      }
+
+    }
+
+  } else {
+    for (let i = 0; i < posts.length; i++) {
+      posts[i].parentElement.style.display = '';
     }
   }
 }
@@ -42,7 +68,7 @@ const getPostsData = async () => {
                 src="https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?h=350&auto=compress&cs=tinysrgb"
                 alt="Card image cap">
               <div class="card-body">
-                <span class="badge-box"><i class="fa fa-check"></i></span>
+                <span class="badge-box"><i class="far fa-star"></i></span>              
                 <h4 class="card-title">${posts[i].title}</h4>
                 <p class="card-text">${posts[i].body}</p>
                 <button onclick = "abrirModal(${posts[i].id}, ${posts[i].userId})" class="btn-post btn btn-default text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPost" >Pincha aquí para más detalles</button>
@@ -50,6 +76,18 @@ const getPostsData = async () => {
             </div>
           </div>`
       }
+      // Inicio Cambia de color el favorito
+      $(".fa-star").click(function() {
+        $(this).toggleClass("background-star");
+        const id = this.parentElement.parentElement.parentElement.id;
+        if (favoritos.find(e => e.id == id)) {
+          favoritos.splice(favoritos.indexOf((item) => (item.id === id)), 1)
+        } else {
+          let postFavorito = posts.find(e => e.id == id);
+          favoritos.push(postFavorito);
+        }
+      })
+      // Fin Cambia de color el favorito      
     });
   }
   catch (err) {
@@ -58,6 +96,7 @@ const getPostsData = async () => {
 };
 
 getPostsData();
+
 
 //Abrir el modal cuando se clickea un post
 
@@ -98,3 +137,6 @@ cargado(function() {
   document.querySelector('#listadoPost').style.display = '';
   document.querySelector('.lds-roller').style.display = 'none';
 })
+
+
+

@@ -84,14 +84,14 @@
       <div class="text-end my-2">
         <label for="filtro" class="form-label-sm col">
           Buscar por </label>
-        <select class="form-select-sm col" id="filtro_select" name="filtrar">
+        <select onchange="FiltroPost()" class="form-select-sm col" id="filtro_select" name="filtrar">
           <option>Todos</option>
           <option>Favoritos</option>
         </select>
       </div>
       <div class="text-end my-2">
         <input class="form-control-sm" type="text" id="filtro" placeholder="ejemplo: Usos prácticos de ..."
-          onkeyup="FiltroPost()" onkeydown="sinNumeros()">
+          onkeyup="BuscarPost()" onkeydown="sinNumeros()">
         <a class="buscar btn btn-dark mt-auto align-self-start">Buscar</a>
       </div>
     </div>
@@ -100,6 +100,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
+              <div class="start-wrapper">
+              <i class="far fa-star"></i>
+            </div>
             <h5 class="modal-title" id="modal-titulo"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -127,21 +130,7 @@
           <div></div>
         </div>
         <div class="row" id="listadoPost">
-          <!-- <div class="col-md-4"> -->
-
-          <!--             <div class="card card-01">
-              <!--               <img class="card-img-top"
-                src="https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg?h=350&auto=compress&cs=tinysrgb"
-                alt="Card image cap"> -->
-          <!--               <div class="card-body"> -->
-          <!--<span class="badge-box"><i class="fa fa-check"></i></span> -->
-          <!--                 <h4 class="card-title">Post 1</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a href="#" class="btn btn-default text-uppercase">Pincha aqui para mas post</a>
-              </div>
-            </div> -->
-          <!-- </div> -->
+          
         </div>
       </div>
     </section>
