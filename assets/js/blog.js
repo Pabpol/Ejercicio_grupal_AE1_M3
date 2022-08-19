@@ -138,16 +138,18 @@ cargado(function() {
   document.querySelector('.lds-roller').style.display = 'none';
 })
 
+
 //Paginacion de los post
-$(document).ready(function(){
+$(document).ready( async function (){
+  while(!document.querySelector(".card")) {
+    await new Promise(wait => setTimeout(wait, 500));
+  }
+  
   var nCards = $(".card").length;
   var limitePorPagina = 6;
   var totalPaginas = Math.ceil(nCards / limitePorPagina);
   var actualPagina;
 
-  console.log(nCards);
-  console.log(totalPaginas);
-  
   function mostrarPagina(pagina){
     if(pagina < 1 || pagina > totalPaginas) return false;
   
