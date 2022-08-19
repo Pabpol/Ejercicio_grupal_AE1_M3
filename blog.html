@@ -79,21 +79,44 @@
 
   <main>
     <div class="container">
+      <div>
 
-      <h1 class="display-3">Blog</h1>
-      <div class="text-end my-2">
-        <label for="filtro" class="form-label-sm col">
-          Buscar por </label>
-        <select onchange="FiltroPost()" class="form-select-sm col" id="filtro_select" name="filtrar">
-          <option>Todos</option>
-          <option>Favoritos</option>
-        </select>
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1527168027773-0cc890c4f42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            height="120" alt="Pots it" class="alt" style="--g: 20px;--b:5px;--s: 80px;--c:#6A4A3C;">
+        </div>
+        <h1 class="display-3">Blog</h1>
+
+        <div class="text-end my-2">
+          <label for="filtro" class="form-label-sm col">
+            Buscar por </label>
+          <select onchange="FiltroPost()" class="form-select-sm col" id="filtro_select" name="filtrar">
+            <option>Todos</option>
+            <option>Favoritos</option>
+          </select>
+        </div>
+        <div class="text-end my-2">
+          <input class="form-control-sm" type="text" id="filtro" placeholder="ejemplo: Usos prácticos de ..."
+            onkeyup="BuscarPost()" onkeydown="sinNumeros()">
+          <a class="buscar btn btn-dark mt-auto align-self-start">Buscar</a>
+        </div>
       </div>
-      <div class="text-end my-2">
-        <input class="form-control-sm" type="text" id="filtro" placeholder="ejemplo: Usos prácticos de ..."
-          onkeyup="BuscarPost()" onkeydown="sinNumeros()">
-        <a class="buscar btn btn-dark mt-auto align-self-start">Buscar</a>
-      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-nav previous-page">
+            <a class="page-link" href="#tituloCompras" tabindex="-1">Prev</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">1</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">2</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">3</a></li>
+          <li class="page-item"><a class="page-link" href="#tituloCompras">4</a></li>
+          <li class="page-nav next-page">
+            <a class="page-link" href="#tituloCompras">Sig</a>
+          </li>
+        </ul>
+      </nav>
+
     </div>
 
     <div class="modal fade" tabindex="-1" id="modalPost" aria-hidden="true">
@@ -114,7 +137,6 @@
     </div>
 
     <section>
-
       <div class="container">
         <div class="lds-roller">
           <div></div>
@@ -127,7 +149,7 @@
           <div></div>
         </div>
         <div class="row" id="listadoPost">
-          
+
         </div>
       </div>
     </section>

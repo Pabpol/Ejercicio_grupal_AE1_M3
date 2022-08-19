@@ -28,11 +28,7 @@ section:before{
 .card{
   box-shadow:2px 2px 20px rgba(0,0,0,0.3); border:none; margin-bottom:30px;
 }
-/* .card:hover{
-  transform: scale(1.05);
-  transition: all 1s ease;
-  z-index: 999;
-} */
+
 .card-01 .card-body{
   position:relative; padding-top:40px;
 }
@@ -295,9 +291,7 @@ body{
     transform: scale(1);
   }
 }
-
-
-
+/* Estilo estrella de Favoritos*/
 .fa-star {
   position: absolute;
   top: 10%;
@@ -372,6 +366,43 @@ body{
     opacity: 0.2;
   }
 }
+
+/*Estilo de imagenes de titulo Blog*/
+
+img {
+  --b: 8px;  /* border thickness*/
+  --s: 60px; /* size of the corner*/
+  --g: 14px; /* the gap*/
+  --c: #EDC951; 
+  
+  padding: calc(var(--b) + var(--g));
+  background-image:
+    conic-gradient(from  90deg at top    var(--b) left  var(--b),#0000 25%,var(--c) 0),
+    conic-gradient(from -90deg at bottom var(--b) right var(--b),#0000 25%,var(--c) 0);
+  background-position:
+    var(--_p,0%) var(--_p,0%),
+    calc(100% - var(--_p,0%)) calc(100% - var(--_p,0%));
+  background-size: var(--s) var(--s);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 
+    background-position .3s var(--_i,.3s), 
+    background-size .3s calc(.3s - var(--_i,.3s));
+}
+img.alt {
+  background-image:
+    conic-gradient(from 180deg at top    var(--b) right var(--b),#0000 25%,var(--c) 0),
+    conic-gradient(from   0deg at bottom var(--b) left  var(--b),#0000 25%,var(--c) 0);
+  background-position:
+    calc(100% - var(--_p,0%)) var(--_p,0%),
+    var(--_p,0%) calc(100% - var(--_p,0%));
+}
+img:hover {
+  background-size: calc(100% - var(--g)) calc(100% - var(--g));
+  --_p: calc(var(--g)/2);
+  --_i: 0s;
+}
+
 
 /* Modal Header */
 .modal-header {
