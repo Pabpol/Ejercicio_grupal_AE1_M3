@@ -148,10 +148,6 @@ cargado(function () {
   document.querySelector("#listadoPost").style.display = "";
   document.querySelector(".lds-roller").style.display = "none";
 });
-cargado(function() {
-  document.querySelector('#listadoPost').style.display = '';
-  document.querySelector('.lds-roller').style.display = 'none';
-})
 
 
 //Paginacion de los post
