@@ -75,14 +75,14 @@ const getPostsData = async () => {
       .then((postsApi) => {
         posts = postsApi;
         for (let i = 0; i < 20; i++) {
-          listadoPost.innerHTML += `<div class="col-md-4">
+          listadoPost.innerHTML += `<div class="col-lg-4 mb-3 d-flex align-items-stretch">
             <div id="${posts[i].id}" class="card post-card">
               <img class="card-img-top"img src="https://picsum.photos/id/${1049 + i}/3844/2563"alt="Card image cap">
-              <div class="card-body">
+              <div class="card-body d-flex flex-column">
                 <span class="badge-box"><i class="far fa-star"></i></span>              
                 <h4 class="card-title">${posts[i].title}</h4>
-                <p class="card-text">${posts[i].body}</p>
-                <button onclick = "abrirModal(${posts[i].id}, ${posts[i].userId})" class="btn-post btn btn-default text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPost" >Pincha aquí para más detalles</button>
+                <p class="card-text mb-4">${posts[i].body}</p>
+                <button onclick = "abrirModal(${posts[i].id}, ${posts[i].userId})" class="btn-post btn btn-default mt-auto align-self-start text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPost" >Pincha aquí para más detalles</button>
               </div>
             </div>
           </div>`;
